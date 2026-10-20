@@ -8,7 +8,7 @@ import { projects } from "../data/content";
         <figure class={`diagram${i === 0 ? " is-active" : ""}`} data-diagram={p.id}>
           {p.bands.map((b) => (
             <div class={`band${b.lit ? " lit" : ""}`}>
-              <p class="band-label">{b.label}</p>
+              {b.figure ? <p class="band-figure">{b.figure.big}<span>{b.figure.caption}</span></p> : <p class="band-label">{b.label}</p>}
               <ul>{b.items.map((it) => <li>{it}</li>)}</ul>
             </div>
           ))}
@@ -28,11 +28,15 @@ import { projects } from "../data/content";
               <div class="row-inner">
                 <p class="row-meta">{p.meta}</p>
                 <p>{p.summary}</p>
+                <dl class="row-facts">
+                  <div><dt>Role</dt><dd>{p.role}</dd></div>
+                  <div><dt>Built with</dt><dd>{p.stack}</dd></div>
+                </dl>
                 <p class="row-note">{p.decision}</p>
                 <figure class="diagram row-diagram" aria-hidden="true">
                   {p.bands.map((b) => (
                     <div class={`band${b.lit ? " lit" : ""}`}>
-                      <p class="band-label">{b.label}</p>
+                      {b.figure ? <p class="band-figure">{b.figure.big}<span>{b.figure.caption}</span></p> : <p class="band-label">{b.label}</p>}
                       <ul>{b.items.map((it) => <li>{it}</li>)}</ul>
                     </div>
                   ))}

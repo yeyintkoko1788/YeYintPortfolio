@@ -50,8 +50,10 @@ if (work && rows.length) {
     });
     diagrams.forEach((d, k) => d.classList.toggle("is-active", k === i));
   };
+  const phone = window.matchMedia("(max-width: 700px)");
   const onScroll = () => {
-    if (performance.now() < holdUntil) return;
+    // On a phone the rows are a plain accordion; only taps change the open one.
+    if (phone.matches || performance.now() < holdUntil) return;
     const rect = work.getBoundingClientRect();
     const total = rect.height - window.innerHeight;
     if (total <= 0) return;

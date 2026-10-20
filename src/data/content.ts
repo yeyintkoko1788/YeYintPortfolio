@@ -1,6 +1,6 @@
 // Every claim here comes from my CV. Where the CV gives no number, none is shown.
 
-export type Band = { label: string; items: string[]; lit?: boolean };
+export type Band = { label: string; items: string[]; lit?: boolean; figure?: { big: string; caption: string } };
 
 export interface Project {
   id: string;
@@ -8,6 +8,8 @@ export interface Project {
   meta: string;
   year: string;
   summary: string;
+  role: string;
+  stack: string;
   decision: string;
   bands: Band[];
 }
@@ -20,10 +22,12 @@ export const projects: Project[] = [
     year: "2022–24",
     summary:
       "I led Android development while the product grew to more than 1M Google Play downloads. I shipped microlessons, short educational videos, Zoom live classes with scheduling and waiting rooms, adaptive level tests, mock exams, achievements, and subscriptions through both Google Play and Huawei billing.",
+    role: "Led Android development",
+    stack: "Zoom SDK, Google Play Billing, Huawei billing",
     decision: "One app, two billing stores, and live video inside a learning flow.",
     bands: [
-      { label: "Learning", items: ["Microlessons", "Level tests", "Mock exams", "Achievements"] },
-      { label: "Live and video", items: ["Zoom live classes", "Scheduling", "Waiting rooms", "Short videos"], lit: true },
+      { label: "Learning", items: ["Microlessons", "Level tests", "Mock exams", "Achievements"], lit: true, figure: { big: "1M+", caption: "Google Play downloads while I led Android" } },
+      { label: "Live and video", items: ["Zoom live classes", "Scheduling", "Waiting rooms", "Short videos"] },
       { label: "Money", items: ["Google Play billing", "Huawei billing", "Premium subscriptions"] },
     ],
   },
@@ -34,6 +38,8 @@ export const projects: Project[] = [
     year: "2024–now",
     summary:
       "I designed and built this from scratch in Jetpack Compose on Clean Architecture. It covers GPS verification, biometric sign-in, PIN security, real-time check-in and check-out, attendance calendars, leave management, analytics, and device detection with administrator approval.",
+    role: "Architected and built it from scratch",
+    stack: "Jetpack Compose, Clean Architecture, biometrics, GPS",
     decision: "Location, biometrics, PIN and device approval, all inside one attendance flow.",
     bands: [
       { label: "Compose interface", items: ["Check-in and out", "Calendars", "Leave", "Analytics"] },
@@ -48,6 +54,8 @@ export const projects: Project[] = [
     year: "2024–now",
     summary:
       "I inherited a codebase that was unstructured and UI-only, and rebuilt it on Clean Architecture rather than patching it. I added parcel scanning with ML Kit and CameraX, customer and rider management, approval workflows, signature-based payment capture, Bluetooth ESC/POS receipt printing, and reporting.",
+    role: "Rebuilt an inherited codebase on Clean Architecture",
+    stack: "ML Kit, CameraX, Bluetooth ESC/POS",
     decision: "Rebuild the structure first, then add hardware: scanner, signature pad, thermal printer.",
     bands: [
       { label: "Counter workflows", items: ["Customers", "Riders", "Approvals", "Reports"] },
@@ -62,6 +70,8 @@ export const projects: Project[] = [
     year: "2024–now",
     summary:
       "I led Android development across three real-time communication apps that share one Socket.IO messaging core. I built and maintain channels, topic threads, reactions, moderation, media sharing, delivery and read receipts, galleries, and role-based access control.",
+    role: "Led Android development across three apps",
+    stack: "Socket.IO",
     decision: "Three products built on one shared messaging core.",
     bands: [
       { label: "Three apps", items: ["MyComm", "HomeChat", "iMessaging"] },
@@ -76,6 +86,8 @@ export const projects: Project[] = [
     year: "2020–21",
     summary:
       "I led development of a video and channel platform with content discovery, subscriptions and personalised feeds, plus a digital music marketplace for artists and buyers. I introduced GraphQL to replace REST requests that over-fetched, which reduced API payload sizes.",
+    role: "Led development, introduced GraphQL",
+    stack: "GraphQL, REST",
     decision: "GraphQL over REST where screens were downloading far more than they showed.",
     bands: [
       { label: "Product", items: ["Discovery", "Subscriptions", "Personalised feeds", "Music marketplace"] },

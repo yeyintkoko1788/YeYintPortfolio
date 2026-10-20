@@ -1,15 +1,19 @@
 ---
-import { site, mailto, asset } from "../data/site";
+import { site, mailto } from "../data/site";
 ---
 <section class="hero" id="top">
-  <img class="hero-img" src={asset("img/hero.jpg")} alt="" width="2400" height="1500" fetchpriority="high" decoding="async" />
+  <div class="hero-layers" aria-hidden="true">
+    <div class="hl hl-1"><span>Interface</span></div>
+    <div class="hl hl-2"><span>Logic</span></div>
+    <div class="hl hl-3"><span>Data</span></div>
+  </div>
   <div class="hero-grid">
     <h1 aria-label={site.name}>
       <span class="line l1"><span>Ye Yint</span></span>
       <span class="line l2"><span>Ko Ko</span></span>
     </h1>
     <div class="hero-mid">
-      <p class="hero-lead">Senior Android engineer. I have built Kotlin and Compose apps since {site.since}: messaging, EdTech and logistics, one past a million downloads.</p>
+      <p class="hero-lead">Senior Android engineer. I have built Kotlin and Compose apps since {site.since}: messaging, EdTech and logistics, one past a million downloads. Open to remote roles with international teams.</p>
       <a class="btn" href={mailto}>Email me</a>
     </div>
   </div>

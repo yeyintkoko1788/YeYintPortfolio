@@ -20,7 +20,6 @@ const ogImage = new URL(asset("og.png"), Astro.site).toString();
     <link rel="icon" href={asset("favicon.svg")} type="image/svg+xml" />
     <link rel="sitemap" href={asset("sitemap-index.xml")} />
     <link rel="preload" href={font400} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={asset("img/hero.jpg")} as="image" fetchpriority="high" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
