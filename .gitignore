@@ -4,3 +4,4 @@ dist
 .taste-skill
 .DS_Store
 .env
+.claude
