@@ -1,15 +1,7 @@
 ---
-import { site, photoCredits } from "../data/site";
+import { site } from "../data/site";
 ---
-<footer class="foot">
-  <div class="foot-row">
-    <p>{site.name}, Android engineer</p>
-    <nav aria-label="Footer">
-      <a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
-    </nav>
-    <p class="foot-end">© {new Date().getFullYear()}</p>
-  </div>
-  <p class="credits">Atmosphere photographs from Unsplash via Lorem Picsum:{" "}
-    {photoCredits.map((c, i) => (<><a href={c.href} rel="noopener">{c.by}</a>{i < photoCredits.length - 1 ? ", " : "."}</>))}
-  </p>
+<footer class="wrap foot">
+  <span>© {new Date().getFullYear()} {site.name} · {site.role}</span>
+  <span>{site.location} · Local time <time data-clock data-tz={site.timeZone}>{site.utcLabel}</time> ({site.utcLabel})</span>
 </footer>

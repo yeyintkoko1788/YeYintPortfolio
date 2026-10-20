@@ -2,24 +2,26 @@
 import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
-import Intro from "../components/Intro.astro";
+import Marquee from "../components/Marquee.astro";
 import Work from "../components/Work.astro";
 import Capabilities from "../components/Capabilities.astro";
 import Experience from "../components/Experience.astro";
-import About from "../components/About.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 ---
 <Base title="Ye Yint Ko Ko · Senior Android Engineer">
-  <Nav />
-  <main id="main">
-    <Hero />
-    <Intro />
-    <Work />
-    <Capabilities />
-    <Experience />
-    <About />
-    <Contact />
-  </main>
+  <div class="top">
+    <div class="glow glow-v" aria-hidden="true"></div>
+    <div class="glow glow-l" aria-hidden="true"></div>
+    <Nav />
+    <main id="main">
+      <Hero />
+    </main>
+    <Marquee />
+  </div>
+  <Work />
+  <Capabilities />
+  <Experience />
+  <Contact />
   <Footer />
 </Base>

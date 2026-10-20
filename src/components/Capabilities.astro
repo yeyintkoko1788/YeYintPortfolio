@@ -1,24 +1,20 @@
 ---
 import { capabilities } from "../data/content";
-import { asset } from "../data/site";
 ---
-<section class="skills" id="skills" aria-labelledby="skills-h">
-  <h2 id="skills-h" data-reveal>What I work with</h2>
-  <div class="skills-cols">
+<section class="wrap sec" id="skills" aria-labelledby="skills-h">
+  <div data-reveal>
+    <p class="mono">Capabilities</p>
+    <h2 id="skills-h" class="disp" style="max-width:900px">Build it, structure it, connect it.</h2>
+  </div>
+  <div class="cols">
     {capabilities.map((g, i) => (
-      <div class="skills-col" data-reveal style={`--d:${i * 90}ms`}>
-        <h3>{g.name}</h3>
-        <ul>
-          {g.items.map((it) => (
-            <li><button type="button" class="cap" data-note={it.note}>{it.name}</button></li>
-          ))}
+      <div class="card" data-reveal style={`--d:${i * 90}ms`}>
+        <p class="mono">0{i + 1} · {g.name}</p>
+        <p class="lead">{g.summary}</p>
+        <ul class="chips">
+          {g.items.map((it) => <li class="chip" title={it.note}>{it.name}</li>)}
         </ul>
-        <p class="skills-sum">{g.summary}</p>
       </div>
     ))}
-    <div class="skills-pic" data-reveal style="--d:200ms">
-      <img src={asset("img/lattice.jpg")} alt="Curved latticed facade in black and white" width="1400" height="1750" loading="lazy" decoding="async" />
-    </div>
-    <p class="skills-note" id="cap-note" aria-live="polite">Hover or focus a name for the context.</p>
   </div>
 </section>

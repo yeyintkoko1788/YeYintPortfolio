@@ -2,17 +2,18 @@
 import { mailto } from "../data/site";
 const links = [
   ["Work", "#work"],
-  ["Skills", "#skills"],
+  ["Capabilities", "#skills"],
   ["Experience", "#experience"],
-  ["Contact", "#contact"],
 ];
 ---
-<header class="nav" data-nav>
-  <a class="nav-mark" href="#top" aria-label="Ye Yint Ko Ko, back to top">Ye Yint Ko Ko</a>
-  <nav aria-label="Primary">
-    <ul>
-      {links.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
-    </ul>
-  </nav>
-  <a class="nav-cta" href={mailto}>Email me</a>
-</header>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Ye Yint Ko Ko, back to top">
+      <span class="brand-mark" aria-hidden="true">YK</span>Ye Yint Ko Ko
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      {links.map(([label, href]) => <a href={href}>{label}</a>)}
+      <a class="btn" href={mailto}>Email me</a>
+    </nav>
+  </header>
+</div>

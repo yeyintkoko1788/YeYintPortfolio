@@ -1,17 +1,14 @@
 ---
-import { site, mailto, asset } from "../data/site";
+import { site, mailto } from "../data/site";
 ---
-<section class="contact" id="contact" aria-labelledby="contact-h">
-  <img class="contact-img" src={asset("img/towers.jpg")} alt="Twin glass towers converging upward against a grey sky" width="2400" height="1500" loading="lazy" decoding="async" />
-  <div class="card" data-reveal>
-    <h2 id="contact-h">Let us talk</h2>
-    <p class="card-addr">{site.location}<br />Working remotely</p>
-    <dl class="card-rows">
-      <div><dt>Local time</dt><dd><time data-clock data-tz={site.timeZone}>{site.utcLabel}</time></dd></div>
-      <div><dt>LinkedIn</dt><dd><a href={site.linkedin} rel="noopener">Ye Yint Ko Ko</a></dd></div>
-      <div><dt>GitHub</dt><dd><a href={site.github} rel="noopener">yeyintkoko1788</a></dd></div>
-    </dl>
-    <p class="card-mail">{site.email}</p>
-    <a class="btn btn-card" href={mailto}>Email Ye Yint</a>
+<section class="wrap" aria-labelledby="contact-h">
+  <div class="contact" id="contact" data-reveal>
+    <p class="mono">Available for remote roles</p>
+    <h2 id="contact-h" class="disp">Let's build<br />something.</h2>
+    <div class="contact-links">
+      <a href={mailto}>{site.email}</a>
+      <a href={site.linkedin} rel="noopener">LinkedIn</a>
+      <a href={site.github} rel="noopener">GitHub</a>
+    </div>
   </div>
 </section>

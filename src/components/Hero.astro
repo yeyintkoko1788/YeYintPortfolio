@@ -1,20 +1,31 @@
 ---
 import { site, mailto } from "../data/site";
 ---
-<section class="hero" id="top">
-  <div class="hero-layers" aria-hidden="true">
-    <div class="hl hl-1"><span>Interface</span></div>
-    <div class="hl hl-2"><span>Logic</span></div>
-    <div class="hl hl-3"><span>Data</span></div>
-  </div>
-  <div class="hero-grid">
-    <h1 aria-label={site.name}>
-      <span class="line l1"><span>Ye Yint</span></span>
-      <span class="line l2"><span>Ko Ko</span></span>
-    </h1>
-    <div class="hero-mid">
-      <p class="hero-lead">Senior Android engineer. I have built Kotlin and Compose apps since {site.since}: messaging, EdTech and logistics, one past a million downloads. Open to remote roles with international teams.</p>
-      <a class="btn" href={mailto}>Email me</a>
+<section class="wrap hero" id="top" aria-label="Introduction">
+  <div>
+    <p class="status"><i aria-hidden="true"></i>Open to remote roles · {site.location.split(",")[0]}, {site.utcLabel}</p>
+    <h1 class="disp">Android apps <br class="br" />that <span class="l">ship</span><br class="br" />and <span class="v">scale.</span></h1>
+    <p class="hero-lead">{site.role}. Kotlin and Jetpack Compose since {site.since}: messaging, EdTech and logistics, including a product past one million Google Play downloads.</p>
+    <div class="hero-cta">
+      <a class="btn" href={mailto}>Email me <span aria-hidden="true">→</span></a>
+      <a class="btn ghost" href="#work">See the work</a>
     </div>
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div class="phone">
+      <div class="screen">
+        <div class="chat-head"><b>#</b><div><strong>product-team</strong><small>24 online</small></div></div>
+        <div class="chat">
+          <div class="msg">Build 412 is out. Receipts working?</div>
+          <div class="msg me">Delivered and read, all three apps.</div>
+          <div class="reacts"><span class="chip">+1 · 4</span><span class="chip">Read · 3</span></div>
+          <div class="msg file"><i></i><span>release-notes.pdf · 1.2 MB</span></div>
+          <div class="msg me">Shipping to Play now.</div>
+        </div>
+        <div class="composer">Message #product-team</div>
+      </div>
+    </div>
+    <div class="float float-a"><div class="disp">1M+</div><span>Play downloads</span></div>
+    <div class="float float-b"><div class="mono">Stack</div><strong>Kotlin · Compose</strong></div>
   </div>
 </section>

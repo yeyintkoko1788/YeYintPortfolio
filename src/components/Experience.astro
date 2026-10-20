@@ -1,17 +1,18 @@
 ---
 import { roles, education } from "../data/content";
+const years = new Date().getFullYear() - 2018;
 ---
-<section class="exp" id="experience" aria-labelledby="exp-h">
-  <h2 id="exp-h" data-reveal>Experience</h2>
+<section class="wrap sec" id="experience" aria-labelledby="exp-h">
+  <div data-reveal>
+    <p class="mono">Experience</p>
+    <h2 id="exp-h" class="disp">{years} years<br />of Android.</h2>
+  </div>
   <ol class="exp-list">
     {roles.map((r, i) => (
       <li class="exp-row" data-reveal style={`--d:${(i % 3) * 70}ms`}>
-        <p class="exp-dates">{r.dates}<span>{r.place}</span></p>
-        <div class="exp-who">
-          <h3>{r.company}</h3>
-          <p>{r.title}</p>
-        </div>
-        <p class="exp-line">{r.line}</p>
+        <p class="mono">{r.dates}<span>{r.place}</span></p>
+        <div><h3>{r.company}</h3><p>{r.title}</p></div>
+        <p>{r.line}</p>
       </li>
     ))}
   </ol>

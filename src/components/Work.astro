@@ -1,51 +1,46 @@
 ---
 import { projects } from "../data/content";
+
+// Layout per project in the bento grid; copy always comes from content.ts.
+const layout: Record<string, { cls: string; span: string }> = {
+  saya: { cls: "lime", span: "span-7" },
+  onecheck: { cls: "", span: "span-5" },
+  xhcounter: { cls: "", span: "span-4" },
+  messaging: { cls: "violet", span: "span-4" },
+  tay: { cls: "", span: "span-4" },
+};
+const checks: Record<string, string[]> = {
+  onecheck: ["GPS verification", "Biometric sign-in + PIN", "Device approval by admin"],
+};
 ---
-<section class="work" id="work" style={`--n:${projects.length}`} aria-labelledby="work-h">
-  <div class="work-stick">
-    <div class="exhibit" data-exhibit aria-hidden="true">
-      {projects.map((p, i) => (
-        <figure class={`diagram${i === 0 ? " is-active" : ""}`} data-diagram={p.id}>
-          {p.bands.map((b) => (
-            <div class={`band${b.lit ? " lit" : ""}`}>
-              {b.figure ? <p class="band-figure">{b.figure.big}<span>{b.figure.caption}</span></p> : <p class="band-label">{b.label}</p>}
-              <ul>{b.items.map((it) => <li>{it}</li>)}</ul>
-            </div>
-          ))}
-        </figure>
-      ))}
+<section class="wrap sec" id="work" aria-labelledby="work-h">
+  <div class="sec-head" data-reveal>
+    <div>
+      <p class="mono">Selected work</p>
+      <h2 id="work-h" class="disp">Five products,<br />real users.</h2>
     </div>
-    <div class="work-list">
-      <h2 id="work-h">Selected work</h2>
-      <ol data-projects>
-        {projects.map((p, i) => (
-          <li class={`row${i === 0 ? " is-active" : ""}`} data-project={p.id}>
-            <button type="button" class="row-head" aria-expanded={i === 0 ? "true" : "false"} aria-controls={`body-${p.id}`}>
-              <span class="row-name">{p.name}</span>
-              <span class="row-year">{p.year}</span>
-            </button>
-            <div class="row-body" id={`body-${p.id}`}>
-              <div class="row-inner">
-                <p class="row-meta">{p.meta}</p>
-                <p>{p.summary}</p>
-                <dl class="row-facts">
-                  <div><dt>Role</dt><dd>{p.role}</dd></div>
-                  <div><dt>Built with</dt><dd>{p.stack}</dd></div>
-                </dl>
-                <p class="row-note">{p.decision}</p>
-                <figure class="diagram row-diagram" aria-hidden="true">
-                  {p.bands.map((b) => (
-                    <div class={`band${b.lit ? " lit" : ""}`}>
-                      {b.figure ? <p class="band-figure">{b.figure.big}<span>{b.figure.caption}</span></p> : <p class="band-label">{b.label}</p>}
-                      <ul>{b.items.map((it) => <li>{it}</li>)}</ul>
-                    </div>
-                  ))}
-                </figure>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
+    <p>Every claim here comes from my CV. Where there is no number, I don't show one.</p>
+  </div>
+  <div class="grid">
+    {projects.map((p, i) => {
+      const l = layout[p.id] ?? { cls: "", span: "span-4" };
+      const figure = p.bands.find((b) => b.figure)?.figure;
+      const stack = p.stack.split(", ");
+      return (
+        <article class={`card ${l.cls} ${l.span}`} data-reveal style={`--d:${(i % 3) * 80}ms`}>
+          <div class="card-top">
+            <div><h3>{p.name}</h3><p class="meta">{p.meta}</p></div>
+            <span class="mono">{p.year}</span>
+          </div>
+          {p.id === "saya" && figure && <p class="disp big" aria-label={`${figure.big} ${figure.caption}`}>{figure.big}</p>}
+          {p.id === "messaging" && <p class="disp big" aria-label="Three apps, one core">3 → 1</p>}
+          {checks[p.id] && <ul class="checks">{checks[p.id].map((c, k) => <li style={`--c:${["var(--lime)", "var(--violet)", "var(--mute)"][k]}`}>{c}</li>)}</ul>}
+          <div>
+            <p class="copy">{p.id === "saya" && figure ? `${figure.caption}. ${p.decision}` : p.summary.length > 170 && p.id !== "onecheck" ? p.decision + " " + p.role + "." : p.summary}</p>
+            <div class="chips">{stack.map((s) => <span class="chip">{s}</span>)}</div>
+          </div>
+        </article>
+      );
+    })}
   </div>
 </section>

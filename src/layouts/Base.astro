@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import { site, asset } from "../data/site";
-import font400 from "../assets/fonts/boska-400.woff2?url";
 
 interface Props { title: string; description?: string }
 const { title, description = site.description } = Astro.props;
@@ -15,11 +14,13 @@ const ogImage = new URL(asset("og.png"), Astro.site).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#1c1c1c" />
+    <meta name="theme-color" content="#0a0b0d" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={asset("favicon.svg")} type="image/svg+xml" />
     <link rel="sitemap" href={asset("sitemap-index.xml")} />
-    <link rel="preload" href={font400} as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
