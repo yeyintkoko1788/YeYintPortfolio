@@ -1,11 +1,11 @@
 ---
+import { site } from "../data/site";
 import { roles, education } from "../data/content";
-const years = new Date().getFullYear() - 2018;
 ---
 <section class="wrap sec" id="experience" aria-labelledby="exp-h">
   <div data-reveal>
     <p class="mono">Experience</p>
-    <h2 id="exp-h" class="disp">{years} years<br />of Android.</h2>
+    <h2 id="exp-h" class="disp">Building Android<br />since {site.since}.</h2>
   </div>
   <ol class="exp-list">
     {roles.map((r, i) => (
