@@ -1,46 +1,23 @@
 ---
 import { projects } from "../data/content";
-
-// Layout per project in the bento grid; copy always comes from content.ts.
-const layout: Record<string, { cls: string; span: string }> = {
-  saya: { cls: "lime", span: "span-7" },
-  onecheck: { cls: "", span: "span-5" },
-  xhcounter: { cls: "", span: "span-4" },
-  messaging: { cls: "violet", span: "span-4" },
-  tay: { cls: "", span: "span-4" },
-};
-const checks: Record<string, string[]> = {
-  onecheck: ["GPS verification", "Biometric sign-in + PIN", "Device approval by admin"],
-};
+const badge: Record<string, string> = { saya: "1M+ downloads", messaging: "3 apps, 1 core" };
 ---
 <section class="wrap sec" id="work" aria-labelledby="work-h">
-  <div class="sec-head" data-reveal>
-    <div>
-      <p class="mono">Selected work</p>
-      <h2 id="work-h" class="disp">Five products,<br />real users.</h2>
-    </div>
-    <p>Every claim here comes from my CV. Where there is no number, I don't show one.</p>
+  <div data-reveal>
+    <p class="prompt" aria-hidden="true">&gt; ls -la work/</p>
+    <h2 id="work-h">Selected <span>work</span></h2>
   </div>
-  <div class="grid">
-    {projects.map((p, i) => {
-      const l = layout[p.id] ?? { cls: "", span: "span-4" };
-      const figure = p.bands.find((b) => b.figure)?.figure;
-      const stack = p.stack.split(", ");
-      return (
-        <article class={`card ${l.cls} ${l.span}`} data-reveal style={`--d:${(i % 3) * 80}ms`}>
-          <div class="card-top">
-            <div><h3>{p.name}</h3><p class="meta">{p.meta}</p></div>
-            <span class="mono">{p.year}</span>
-          </div>
-          {p.id === "saya" && figure && <p class="disp big" aria-label={`${figure.big} ${figure.caption}`}>{figure.big}</p>}
-          {p.id === "messaging" && <p class="disp big" aria-label="Three apps, one core">3 → 1</p>}
-          {checks[p.id] && <ul class="checks">{checks[p.id].map((c, k) => <li style={`--c:${["var(--lime)", "var(--violet)", "var(--mute)"][k]}`}>{c}</li>)}</ul>}
-          <div>
-            <p class="copy">{p.id === "saya" && figure ? `${figure.caption}. ${p.decision}` : p.summary.length > 170 && p.id !== "onecheck" ? p.decision + " " + p.role + "." : p.summary}</p>
-            <div class="chips">{stack.map((s) => <span class="chip">{s}</span>)}</div>
-          </div>
-        </article>
-      );
-    })}
-  </div>
+  <ol class="list">
+    {projects.map((p, i) => (
+      <li class="log" data-reveal style={`--d:${(i % 3) * 60}ms`}>
+        <span class="when">{p.year}</span>
+        <div>
+          <h3>{p.name.toLowerCase().replace(/\s+/g, "-")}{badge[p.id] && <span class="pill">{badge[p.id]}</span>}</h3>
+          <p>{p.role}. {p.decision}</p>
+          <p style="font-size:15px">{p.meta}</p>
+        </div>
+        <span class="side">{p.stack.split(", ")[0]}</span>
+      </li>
+    ))}
+  </ol>
 </section>

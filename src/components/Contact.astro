@@ -2,13 +2,16 @@
 import { site, mailto } from "../data/site";
 ---
 <section class="wrap" aria-labelledby="contact-h">
-  <div class="contact" id="contact" data-reveal>
-    <p class="mono">Available for remote roles</p>
-    <h2 id="contact-h" class="disp">Let's build<br />something.</h2>
-    <div class="contact-links">
-      <a href={mailto}>{site.email}</a>
-      <a href={site.linkedin} rel="noopener">LinkedIn</a>
-      <a href={site.github} rel="noopener">GitHub</a>
+  <div class="win contact" id="contact" data-reveal>
+    <div class="win-h"><i></i><i></i><i></i><span>contact.sh</span></div>
+    <div class="contact-body">
+      <p class="prompt" aria-hidden="true">&gt; ./hire.sh --remote</p>
+      <h2 id="contact-h">Let's build<span class="cur" aria-hidden="true"></span></h2>
+      <div class="contact-links">
+        <a class="btn" href={mailto}>{site.email}</a>
+        <a class="btn o" href={site.linkedin} rel="noopener">linkedin</a>
+        <a class="btn o" href={site.github} rel="noopener">github</a>
+      </div>
     </div>
   </div>
 </section>

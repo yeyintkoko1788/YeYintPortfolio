@@ -1,19 +1,22 @@
 ---
 import { capabilities } from "../data/content";
+const key: Record<string, string> = { Build: "implementation", Structure: "pattern", Connect: "connect" };
 ---
 <section class="wrap sec" id="skills" aria-labelledby="skills-h">
   <div data-reveal>
-    <p class="mono">Capabilities</p>
-    <h2 id="skills-h" class="disp" style="max-width:900px">Build it, structure it, connect it.</h2>
+    <p class="prompt" aria-hidden="true">&gt; cat build.gradle.kts</p>
+    <h2 id="skills-h">What I <span>work with</span></h2>
   </div>
   <div class="cols">
     {capabilities.map((g, i) => (
-      <div class="card" data-reveal style={`--d:${i * 90}ms`}>
-        <p class="mono">0{i + 1} · {g.name}</p>
-        <p class="lead">{g.summary}</p>
-        <ul class="chips">
-          {g.items.map((it) => <li class="chip" title={it.note}>{it.name}</li>)}
-        </ul>
+      <div class="win" data-reveal style={`--d:${i * 80}ms`}>
+        <div class="win-h">{g.name.toLowerCase()}</div>
+        <div class="body">
+          <p>{g.summary}</p>
+          <ul>
+            {g.items.map((it) => <li title={it.note}><span class="s">{key[g.name]}</span> {it.name}</li>)}
+          </ul>
+        </div>
       </div>
     ))}
   </div>

@@ -4,17 +4,17 @@ const years = new Date().getFullYear() - 2018;
 ---
 <section class="wrap sec" id="experience" aria-labelledby="exp-h">
   <div data-reveal>
-    <p class="mono">Experience</p>
-    <h2 id="exp-h" class="disp">{years} years<br />of Android.</h2>
+    <p class="prompt" aria-hidden="true">&gt; git log --oneline</p>
+    <h2 id="exp-h">{years} years <span>of commits</span></h2>
   </div>
-  <ol class="exp-list">
+  <ol class="list">
     {roles.map((r, i) => (
-      <li class="exp-row" data-reveal style={`--d:${(i % 3) * 70}ms`}>
-        <p class="mono">{r.dates}<span>{r.place}</span></p>
-        <div><h3>{r.company}</h3><p>{r.title}</p></div>
-        <p>{r.line}</p>
+      <li class="log sm" data-reveal style={`--d:${(i % 3) * 60}ms`}>
+        <span class="when">{r.dates}</span>
+        <div><h3>{r.company}</h3><p>{r.title} · {r.place}. {r.line}</p></div>
+        <span></span>
       </li>
     ))}
   </ol>
-  <p class="exp-edu" data-reveal>{education.school}. {education.degree}.</p>
+  <p class="prompt" style="margin-top:24px" data-reveal># {education.school}. {education.degree}.</p>
 </section>

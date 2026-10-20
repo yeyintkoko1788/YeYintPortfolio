@@ -3,29 +3,30 @@ import { site, mailto } from "../data/site";
 ---
 <section class="wrap hero" id="top" aria-label="Introduction">
   <div>
-    <p class="status"><i aria-hidden="true"></i>Open to remote roles · {site.location.split(",")[0]}, {site.utcLabel}</p>
-    <h1 class="disp">Android apps <br class="br" />that <span class="l">ship</span><br class="br" />and <span class="v">scale.</span></h1>
-    <p class="hero-lead">{site.role}. Kotlin and Jetpack Compose since {site.since}: messaging, EdTech and logistics, including a product past one million Google Play downloads.</p>
+    <p class="prompt g" aria-hidden="true">&gt; whoami</p>
+    <h1>Ye Yint<br />Ko Ko<span class="cur" aria-hidden="true"></span></h1>
+    <p class="hero-lead">{site.role}. Kotlin and Compose since {site.since}, one app past 1M Play downloads. Open to remote roles with international teams.</p>
     <div class="hero-cta">
-      <a class="btn" href={mailto}>Email me <span aria-hidden="true">→</span></a>
-      <a class="btn ghost" href="#work">See the work</a>
+      <a class="btn" href={mailto}>$ send --email</a>
+      <a class="btn o" href="#work">$ ls work/</a>
     </div>
   </div>
-  <div class="stage" aria-hidden="true">
-    <div class="phone">
-      <div class="screen">
-        <div class="chat-head"><b>#</b><div><strong>product-team</strong><small>24 online</small></div></div>
-        <div class="chat">
-          <div class="msg">Build 412 is out. Receipts working?</div>
-          <div class="msg me">Delivered and read, all three apps.</div>
-          <div class="reacts"><span class="chip">+1 · 4</span><span class="chip">Read · 3</span></div>
-          <div class="msg file"><i></i><span>release-notes.pdf · 1.2 MB</span></div>
-          <div class="msg me">Shipping to Play now.</div>
-        </div>
-        <div class="composer">Message #product-team</div>
-      </div>
-    </div>
-    <div class="float float-a"><div class="disp">1M+</div><span>Play downloads</span></div>
-    <div class="float float-b"><div class="mono">Stack</div><strong>Kotlin · Compose</strong></div>
+  <div class="win" aria-hidden="true">
+    <div class="win-h"><i></i><i></i><i></i><span>ChatScreen.kt</span></div>
+    <pre class="code"><span class="c">// one core, three apps</span>
+<span class="k">@Composable</span>
+<span class="k">fun</span> <span class="f">Channel</span>(vm: <span class="f">ChatViewModel</span>) {'{'}
+  <span class="k">val</span> msgs <span class="k">by</span> vm.messages.<span class="f">collectAsState</span>()
+
+  <span class="f">LazyColumn</span> {'{'}
+    <span class="f">items</span>(msgs) {'{'} m <span class="k">-&gt;</span>
+      <span class="f">Bubble</span>(
+        text = m.text,
+        status = m.<span class="s">receipt</span>, <span class="c">// delivered, read</span>
+      )
+    {'}'}
+  {'}'}
+{'}'}</pre>
+    <div class="statusbar"><span><i>●</i> build passing</span><span>1M+ downloads</span><span>{site.location.split(",")[0]} · {site.utcLabel}</span></div>
   </div>
 </section>
