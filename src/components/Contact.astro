@@ -1,0 +1,17 @@
+---
+import { site, mailto, asset } from "../data/site";
+---
+<section class="contact" id="contact" aria-labelledby="contact-h">
+  <img class="contact-img" src={asset("img/towers.jpg")} alt="Twin glass towers converging upward against a grey sky" width="2400" height="1500" loading="lazy" decoding="async" />
+  <div class="card" data-reveal>
+    <h2 id="contact-h">Let us talk</h2>
+    <p class="card-addr">{site.location}<br />Working remotely</p>
+    <dl class="card-rows">
+      <div><dt>Local time</dt><dd><time data-clock data-tz={site.timeZone}>{site.utcLabel}</time></dd></div>
+      <div><dt>LinkedIn</dt><dd><a href={site.linkedin} rel="noopener">Ye Yint Ko Ko</a></dd></div>
+      <div><dt>GitHub</dt><dd><a href={site.github} rel="noopener">yeyintkoko1788</a></dd></div>
+    </dl>
+    <p class="card-mail">{site.email}</p>
+    <a class="btn btn-card" href={mailto}>Email Ye Yint</a>
+  </div>
+</section>

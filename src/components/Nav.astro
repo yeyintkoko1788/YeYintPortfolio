@@ -1,0 +1,16 @@
+---
+const links = [
+  ["Work", "#work"],
+  ["Skills", "#skills"],
+  ["Experience", "#experience"],
+  ["Contact", "#contact"],
+];
+---
+<header class="nav" data-nav>
+  <a class="nav-mark" href="#top" aria-label="Ye Yint Ko Ko, back to top">Ye Yint Ko Ko</a>
+  <nav aria-label="Primary">
+    <ul>
+      {links.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+    </ul>
+  </nav>
+</header>

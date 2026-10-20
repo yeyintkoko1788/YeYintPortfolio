@@ -1,0 +1,47 @@
+---
+import { projects } from "../data/content";
+---
+<section class="work" id="work" style={`--n:${projects.length}`} aria-labelledby="work-h">
+  <div class="work-stick">
+    <div class="exhibit" data-exhibit aria-hidden="true">
+      {projects.map((p, i) => (
+        <figure class={`diagram${i === 0 ? " is-active" : ""}`} data-diagram={p.id}>
+          {p.bands.map((b) => (
+            <div class={`band${b.lit ? " lit" : ""}`}>
+              <p class="band-label">{b.label}</p>
+              <ul>{b.items.map((it) => <li>{it}</li>)}</ul>
+            </div>
+          ))}
+        </figure>
+      ))}
+    </div>
+    <div class="work-list">
+      <h2 id="work-h">Selected work</h2>
+      <ol data-projects>
+        {projects.map((p, i) => (
+          <li class={`row${i === 0 ? " is-active" : ""}`} data-project={p.id}>
+            <button type="button" class="row-head" aria-expanded={i === 0 ? "true" : "false"} aria-controls={`body-${p.id}`}>
+              <span class="row-name">{p.name}</span>
+              <span class="row-year">{p.year}</span>
+            </button>
+            <div class="row-body" id={`body-${p.id}`}>
+              <div class="row-inner">
+                <p class="row-meta">{p.meta}</p>
+                <p>{p.summary}</p>
+                <p class="row-note">{p.decision}</p>
+                <figure class="diagram row-diagram" aria-hidden="true">
+                  {p.bands.map((b) => (
+                    <div class={`band${b.lit ? " lit" : ""}`}>
+                      <p class="band-label">{b.label}</p>
+                      <ul>{b.items.map((it) => <li>{it}</li>)}</ul>
+                    </div>
+                  ))}
+                </figure>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
